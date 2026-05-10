@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>連合党 — 公式ウェブサイト</title>
+<link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'TsukuhouShogo';
+  src: url('TsukuhouShogoMin-OFL.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --purple: #6b2d8b;
+  --purple-dark: #4a1a63;
+  --purple-light: #8b3dab;
+  --purple-pale: #f5f0f8;
+  --text: #1a1a1a;
+  --text2: #555;
+  --border: rgba(0,0,0,0.1);
+}
+
+body {
+  font-family: 'Sawarabi Mincho', serif;
+  color: var(--text);
+  background: white;
+}
+
+/* NAV */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: white;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3rem;
+  height: 60px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+
+.nav-logo img {
+  height: 36px;
+  width: auto;
+}
+
+.nav-logo-text {
+  font-family: 'TsukuhouShogo', serif;
+  font-size: 1.1rem;
+  color: var(--purple);
+  letter-spacing: 0.05em;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+}
+
+.nav-links li a {
+  display: block;
+  padding: 0 1rem;
+  height: 60px;
+  line-height: 60px;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: var(--purple);
+  border-bottom-color: var(--purple);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  background: #f0f0f0;
+  border-radius: 20px;
+  padding: 2px;
+  font-size: 0.7rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.lang-btn {
+  padding: 0.2rem 0.7rem;
+  border-radius: 18px;
+  transition: all 0.2s;
+  letter-spacing: 0.05em;
+}
+
+.lang-btn.active {
+  background: var(--purple);
+  color: white;
+}
+
+.nav-join {
+  background: var(--purple);
+  color: white;
+  border: none;
+  padding: 0.4rem 1.1rem;
+  font-family: 'Sawarabi Mincho', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.nav-join:hover { background: var(--purple-dark); }
+
+/* HERO */
+.hero {
+  width: 100%;
+  aspect-ratio: 16/7;
+  background: white;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-border {
+  position: absolute;
+  inset: 20px;
+  border: 3px solid var(--purple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.hero-motto {
+  font-family: 'TsukuhouShogo', serif;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  color: var(--purple);
+  letter-spacing: 0.08em;
+  text-align: center;
+  line-height: 1.4;
+  padding: 0 3rem;
+}
+
+.hero-motto-en {
+  font-family: 'TsukuhouShogo', serif;
+  font-size: clamp(1.8rem, 3.5vw, 3.5rem);
+  color: var(--purple);
+  letter-spacing: 0.06em;
+  text-align: center;
+  line-height: 1.4;
+  padding: 0 3rem;
+  display: none;
+}
+
+.hero-sub {
+  font-size: clamp(0.75rem, 1.2vw, 1rem);
+  color: var(--text2);
+  letter-spacing: 0.12em;
+  text-align: center;
+}
+
+.hero-sub-en {
+  font-size: clamp(0.75rem, 1.2vw, 1rem);
+  color: var(--text2);
+  letter-spacing: 0.08em;
+  text-align: center;
+  display: none;
+}
+
+/* TICKER */
+.ticker {
+  background: var(--purple);
+  color: white;
+  padding: 0.6rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ticker-inner {
+  display: inline-block;
+  animation: ticker 30s linear infinite;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+}
+
+@keyframes ticker {
+  0% { transform: translateX(100vw); }
+  100% { transform: translateX(-100%); }
+}
+
+/* SECTIONS */
+.section {
+  padding: 5rem 6rem;
+}
+
+.section-alt {
+  background: var(--purple-pale);
+}
+
+.section-title {
+  font-family: 'TsukuhouShogo', serif;
+  font-size: 1.8rem;
+  color: var(--purple);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+
+.section-title-en {
+  font-family: 'TsukuhouShogo', serif;
+  font-size: 1.8rem;
+  color: var(--purple);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.5rem;
+  display: none;
+}
+
+.section-rule {
+  width: 40px;
+  height: 2px;
+  background: var(--purple);
+  margin-bottom: 2.5rem;
+}
+
+/* POLICY GRID */
+.policy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.policy-card {
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  background: white;
+  transition: border-color 0.2s;
+}
+
+.policy-card:hover { border-color: var(--purple-light); }
+
+.policy-num {
+  font-family: 'TsukuhouShogo', serif;
+  font-size: 2rem;
+  color: var(--purple);
+  opacity: 0.3;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.policy-title {
+  font-size: 0.95rem;
+  font-weight: normal;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.6rem;
+  color: var(--text);
+}
+
+.policy-title-en {
+  font-size: 0.95rem;
+  font-weight: normal;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.6rem;
+  color: var(--text);
+  display: none;
+}
+
+.policy-body {
+  font-size: 0.78rem;
+  color: var(--text2);
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+}
+
+.policy-body-en {
+  font-size: 0.78rem;
+  color: var(--text2);
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  display: none;
+}
+
+/* NEWS GRID */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.news-card {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+  cursor: pointer;
+}
+
+.news-date {
+  font-size: 0.7rem;
+  color: var(--text2);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.4rem;
+}
+
+.news-tag {
+  display: inline-block;
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  padding: 0.1rem 0.5rem;
+  border: 1px solid var(--purple);
+  color: var(--purple);
+  margin-bottom: 0.5rem;
+}
+
+.news-title {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+
+.news-title-en {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  display: none;
+}
+
+/* JOIN BANNER */
+.join-banner {
+  background: var(--purple);
+  color: white;
+  padding: 4rem 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.join-title {
+  font-family: 'TsukuhouShogo', serif;
+  font-size: 1.8rem;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+}
+
+.join-title-en {
+  font-family: 'TsukuhouShogo', serif;
+  font-size: 1.8rem;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+  display: none;
+}
+
+.join-sub {
+  font-size: 0.82rem;
+  opacity: 0.8;
+  margin-top: 0.5rem;
+  letter-spacing: 0.06em;
+  line-height: 1.7;
+}
+
+.join-sub-en {
+  font-size: 0.82rem;
+  opacity: 0.8;
+  margin-top: 0.5rem;
+  letter-spacing: 0.04em;
+  line-height: 1.7;
+  display: none;
+}
+
+.join-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  flex-shrink: 0;
+}
+
+.btn-white {
+  background: white;
+  color: var(--purple);
+  border: none;
+  padding: 0.7rem 2rem;
+  font-family: 'Sawarabi Mincho', serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  text-align: center;
+  transition: opacity 0.2s;
+  text-decoration: none;
+  display: block;
+}
+
+.btn-white:hover { opacity: 0.85; }
+
+.btn-outline-white {
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.6);
+  padding: 0.7rem 2rem;
+  font-family: 'Sawarabi Mincho', serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: block;
+}
+
+.btn-outline-white:hover { border-color: white; }
+
+/* FOOTER */
+footer {
+  background: var(--purple-dark);
+  color: rgba(255,255,255,0.7);
+  padding: 3rem 6rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  line-height: 1.8;
+}
+
+.footer-brand {
+  grid-column: 1;
+}
+
+.footer-brand-name {
+  font-family: 'TsukuhouShogo', serif;
+  font-size: 1.1rem;
+  color: white;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+
+.footer-brand-en {
+  font-size: 0.72rem;
+  opacity: 0.6;
+  margin-bottom: 1rem;
+}
+
+.footer-copy {
+  font-size: 0.68rem;
+  opacity: 0.5;
+  margin-top: 1rem;
+}
+
+.footer-links h4 {
+  color: white;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.8rem;
+  font-weight: normal;
+}
+
+.footer-links a {
+  display: block;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  margin-bottom: 0.3rem;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: white; }
+
+/* ENGLISH MODE */
+body.en .ja { display: none !important; }
+body.en .en-content { display: block !important; }
+body.en .hero-motto { display: none; }
+body.en .hero-motto-en { display: block; }
+body.en .hero-sub { display: none; }
+body.en .hero-sub-en { display: block; }
+body.en .section-title { display: none; }
+body.en .section-title-en { display: block; }
+body.en .policy-title { display: none; }
+body.en .policy-title-en { display: block; }
+body.en .policy-body { display: none; }
+body.en .policy-body-en { display: block; }
+body.en .news-title { display: block; }
+body.en .news-title-en { display: none; }
+body.en .join-title { display: none; }
+body.en .join-title-en { display: block; }
+body.en .join-sub { display: none; }
+body.en .join-sub-en { display: block; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="logo.png">
+    <span class="nav-logo-text ja">連合党</span>
+    <span class="nav-logo-text en-content" style="display:none">Union Party</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#policy" class="ja">重点政策</a><a href="#policy" class="en-content" style="display:none">Policy</a></li>
+    <li><a href="#members" class="ja">議員</a><a href="#members" class="en-content" style="display:none">Members</a></li>
+    <li><a href="#news" class="ja">ニュース</a><a href="#news" class="en-content" style="display:none">News</a></li>
+    <li><a href="#elections" class="ja">選挙</a><a href="#elections" class="en-content" style="display:none">Elections</a></li>
+    <li><a href="#rep" class="ja">代議士になる</a><a href="#rep" class="en-content" style="display:none">Become a Representative</a></li>
+    <li><a href="#join" class="ja">入党</a><a href="#join" class="en-content" style="display:none">Join</a></li>
+    <li><a href="#donate" class="ja">寄付</a><a href="#donate" class="en-content" style="display:none">Donate</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-toggle" onclick="toggleLang()">
+      <div class="lang-btn active" id="btn-ja">日本語</div>
+      <div class="lang-btn" id="btn-en">EN</div>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-border">
+    <div class="hero-motto">帝国を、強く一つに。</div>
+    <div class="hero-motto-en">One Empire. One Future.</div>
+    <div class="hero-sub">連合党公式ウェブサイト</div>
+    <div class="hero-sub-en">Official Website of the Union Party</div>
+  </div>
+</section>
+
+<div class="ticker">
+  <span class="ticker-inner ja">
+    　　　連合党は、帝国の統一と効率的な統治を推進します。　　　帝国を、強く一つに。　　　重点政策を発表しました。　　　次期選挙に向けて候補者を募集しています。　　　連合党は、帝国の未来を守ります。　　　入党受付中。　　　
+  </span>
+  <span class="ticker-inner en-content" style="display:none">
+    　　　The Union Party stands for imperial unity and efficient governance.　　　One Empire. One Future.　　　New policy platform released.　　　Candidate applications now open.　　　Join the Union Party today.　　　
+  </span>
+</div>
+
+<section class="section" id="policy">
+  <div class="section-title ja">重点政策</div>
+  <div class="section-title-en">Policy Platform</div>
+  <div class="section-rule"></div>
+  <div class="policy-grid">
+    <div class="policy-card">
+      <div class="policy-num">01</div>
+      <div class="policy-title ja">帝国統治の効率化</div>
+      <div class="policy-title-en">Administrative Efficiency</div>
+      <div class="policy-body ja">三国間の重複する行政機構を統合し、迅速かつ一貫した政策実施を実現します。帝国全体の利益を最優先に考えた統治体制を構築します。</div>
+      <div class="policy-body-en">Consolidating overlapping administrative structures across the three constituent countries to enable swift, consistent policy implementation across the Empire.</div>
+    </div>
+    <div class="policy-card">
+      <div class="policy-num">02</div>
+      <div class="policy-title ja">経済の一体化</div>
+      <div class="policy-title-en">Economic Integration</div>
+      <div class="policy-body ja">分断された地域経済政策を統一し、帝国全体の競争力を強化します。共通の産業・投資政策により、持続可能な成長を実現します。</div>
+      <div class="policy-body-en">Unifying fragmented regional economic policies to strengthen the Empire's overall competitiveness through common industrial and investment frameworks.</div>
+    </div>
+    <div class="policy-card">
+      <div class="policy-num">03</div>
+      <div class="policy-title ja">安全保障の強化</div>
+      <div class="policy-title-en">National Security</div>
+      <div class="policy-body ja">帝国防衛を一元的に管理し、三地域の防衛力を統合することで、より強固な安全保障体制を確立します。</div>
+      <div class="policy-body-en">Centralising imperial defence under a unified command structure, integrating the defence capabilities of all three constituent countries.</div>
+    </div>
+    <div class="policy-card">
+      <div class="policy-num">04</div>
+      <div class="policy-title ja">インフラの統合</div>
+      <div class="policy-title-en">Infrastructure Unity</div>
+      <div class="policy-body ja">交通・エネルギー・通信インフラを帝国全体で統一的に整備し、地域間の格差を解消します。</div>
+      <div class="policy-body-en">Developing transport, energy, and communications infrastructure on an empire-wide basis, eliminating disparities between constituent countries.</div>
+    </div>
+    <div class="policy-card">
+      <div class="policy-num">05</div>
+      <div class="policy-title ja">教育の標準化</div>
+      <div class="policy-title-en">Educational Standards</div>
+      <div class="policy-body ja">帝国全土で質の高い教育機会を均等に提供するため、統一的な教育基準と支援制度を確立します。</div>
+      <div class="policy-body-en">Establishing uniform educational standards and support systems to ensure equal access to high-quality education across the entire Empire.</div>
+    </div>
+    <div class="policy-card">
+      <div class="policy-num">06</div>
+      <div class="policy-title ja">財政の再建</div>
+      <div class="policy-title-en">Fiscal Responsibility</div>
+      <div class="policy-body ja">分権化による非効率な財政支出を見直し、帝国全体の財政健全化を図ります。統一的な予算管理で無駄を排除します。</div>
+      <div class="policy-body-en">Reviewing inefficient decentralised spending and restoring imperial fiscal health through unified budget management and elimination of redundancy.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="news">
+  <div class="section-title ja">最新ニュース</div>
+  <div class="section-title-en">Latest News</div>
+  <div class="section-rule"></div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="news-date">2026.05.08</div>
+      <div class="news-tag ja">政策</div>
+      <div class="news-tag en-content" style="display:none">Policy</div>
+      <div class="news-title ja">連合党、新たな帝国行政効率化法案を国会に提出</div>
+      <div class="news-title-en" style="display:none">Union Party submits new Imperial Administrative Efficiency Bill to the Diet</div>
+    </div>
+    <div class="news-card">
+      <div class="news-date">2026.05.03</div>
+      <div class="news-tag ja">声明</div>
+      <div class="news-tag en-content" style="display:none">Statement</div>
+      <div class="news-title ja">阿部博幹事長、財政回復の遅れについて連立政権を批判</div>
+      <div class="news-title-en" style="display:none">Secretary-General Hiroshi Abe criticises coalition government over pace of fiscal recovery</div>
+    </div>
+    <div class="news-card">
+      <div class="news-date">2026.04.27</div>
+      <div class="news-tag ja">選挙</div>
+      <div class="news-tag en-content" style="display:none">Elections</div>
+      <div class="news-title ja">次期衆議院選挙に向け、連合党が候補者擁立方針を発表</div>
+      <div class="news-title-en" style="display:none">Union Party announces candidate selection strategy ahead of next general election</div>
+    </div>
+    <div class="news-card">
+      <div class="news-date">2026.04.19</div>
+      <div class="news-tag ja">議会</div>
+      <div class="news-tag en-content" style="display:none">Parliament</div>
+      <div class="news-title ja">衆議院にて連合党議員が地方分権コストについて質疑</div>
+      <div class="news-title-en" style="display:none">Union Party MPs question the fiscal cost of devolution in the House of Representatives</div>
+    </div>
+    <div class="news-card">
+      <div class="news-date">2026.04.11</div>
+      <div class="news-tag ja">政策</div>
+      <div class="news-tag en-content" style="display:none">Policy</div>
+      <div class="news-title ja">連合党、帝国防衛一元化に関する政策白書を公表</div>
+      <div class="news-title-en" style="display:none">Union Party publishes white paper on unified imperial defence command</div>
+    </div>
+    <div class="news-card">
+      <div class="news-date">2026.04.04</div>
+      <div class="news-tag ja">入党</div>
+      <div class="news-tag en-content" style="display:none">Membership</div>
+      <div class="news-title ja">連合党の党員数が過去最高を更新、全国で支部拡大</div>
+      <div class="news-title-en" style="display:none">Union Party membership reaches record high as branch network expands nationwide</div>
+    </div>
+  </div>
+</section>
+
+<section class="join-banner" id="join">
+  <div>
+    <div class="join-title ja">連合党とともに、<br>帝国の未来を築く。</div>
+    <div class="join-title-en">Build the Empire's future<br>with the Union Party.</div>
+    <div class="join-sub ja">あなたの力が、帝国をより強く、より一つにします。<br>今すぐ入党して、変化の一端を担ってください。</div>
+    <div class="join-sub-en">Your commitment strengthens the Empire and brings it closer together.<br>Join today and be part of the change.</div>
+  </div>
+  <div class="join-buttons">
+    <a href="#join" class="btn-white ja">入党申込</a>
+    <a href="#join" class="btn-white en-content" style="display:none">Join the Party</a>
+    <a href="#rep" class="btn-outline-white ja">代議士候補として立候補する</a>
+    <a href="#rep" class="btn-outline-white en-content" style="display:none">Stand as a Candidate</a>
+    <a href="#donate" class="btn-outline-white ja">寄付する</a>
+    <a href="#donate" class="btn-outline-white en-content" style="display:none">Donate</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">
+    <div class="footer-brand-name ja">連合党</div>
+    <div class="footer-brand-name en-content" style="display:none">Union Party</div>
+    <div class="footer-brand-en">Rengō-tō · 連合党</div>
+    <div class="ja">〒100-0014<br>東京都千代田区永田町1-7-1<br>連合党本部</div>
+    <div class="en-content" style="display:none">1-7-1 Nagatacho, Chiyoda-ku<br>Tokyo 100-0014<br>Union Party Headquarters</div>
+    <div class="footer-copy ja">© 2026 連合党 · 無断転載禁止</div>
+    <div class="footer-copy en-content" style="display:none">© 2026 Union Party · All rights reserved</div>
+  </div>
+  <div class="footer-links">
+    <h4 class="ja">サイトマップ</h4>
+    <h4 class="en-content" style="display:none">Site Map</h4>
+    <a href="#policy" class="ja">重点政策</a>
+    <a href="#policy" class="en-content" style="display:none">Policy</a>
+    <a href="#members" class="ja">議員</a>
+    <a href="#members" class="en-content" style="display:none">Members</a>
+    <a href="#news" class="ja">ニュース</a>
+    <a href="#news" class="en-content" style="display:none">News</a>
+    <a href="#elections" class="ja">選挙</a>
+    <a href="#elections" class="en-content" style="display:none">Elections</a>
+    <a href="#join" class="ja">入党</a>
+    <a href="#join" class="en-content" style="display:none">Join</a>
+    <a href="#donate" class="ja">寄付</a>
+    <a href="#donate" class="en-content" style="display:none">Donate</a>
+  </div>
+  <div class="footer-links">
+    <h4 class="ja">関連リンク</h4>
+    <h4 class="en-content" style="display:none">Related Links</h4>
+    <a href="#" class="ja">国会議員一覧</a>
+    <a href="#" class="en-content" style="display:none">Diet Member Directory</a>
+    <a href="#" class="ja">党規約・綱領</a>
+    <a href="#" class="en-content" style="display:none">Party Constitution & Platform</a>
+    <a href="#" class="ja">プライバシーポリシー</a>
+    <a href="#" class="en-content" style="display:none">Privacy Policy</a>
+    <a href="#" class="ja">お問い合わせ</a>
+    <a href="#" class="en-content" style="display:none">Contact</a>
+  </div>
+</footer>
+
+<script>
+var isEn = false;
+
+function toggleLang() {
+  isEn = !isEn;
+  var body = document.body;
+  var btnJa = document.getElementById('btn-ja');
+  var btnEn = document.getElementById('btn-en');
+
+  if (isEn) {
+    body.classList.add('en');
+    btnJa.classList.remove('active');
+    btnEn.classList.add('active');
+    // show en-content, hide ja
+    document.querySelectorAll('.en-content').forEach(function(el) { el.style.display = ''; });
+    document.querySelectorAll('.ja').forEach(function(el) { el.style.display = 'none'; });
+  } else {
+    body.classList.remove('en');
+    btnJa.classList.add('active');
+    btnEn.classList.remove('active');
+    document.querySelectorAll('.en-content').forEach(function(el) { el.style.display = 'none'; });
+    document.querySelectorAll('.ja').forEach(function(el) { el.style.display = ''; });
+  }
+}
+</script>
+
+</body>
+</html>
